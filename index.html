@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yah Growth ISP – Diagnóstico Estratégico Gratuito</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #02010b;
+      --bg-alt: #070715;
+      --bg-soft: #050512;
+      --card: #0b0b18;
+      --card-soft: #101021;
+      --text: #ffffff;
+      --muted: #b8b8c7;
+      --border: #262637;
+      --primary: #a855ff;
+      --primary-soft: rgba(168, 85, 255, 0.22);
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --transition: 0.18s ease-out;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top left, #1a1035 0, #02010b 45%, #000000 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body { line-height: 1.6; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrapper { min-height: 100vh; }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 4.2vw, 3.4rem);
+      line-height: 1.08;
+      font-weight: 730;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      line-height: 1.16;
+      font-weight: 650;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* BRAND (LOGO + NOME) */
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    /* Logo da Yah usando o arquivo real */
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      background: url("logos/logo-yahgrowth.png") center center / cover no-repeat;
+      border: 1px solid rgba(226, 232, 255, 0.65);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.9),
+        0 12px 26px rgba(0, 0, 0, 0.9);
+    }
+
+    .brand-name {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #cbd5f5;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding-top: 96px;
+      background:
+        radial-gradient(circle at top left, rgba(168, 85, 255, 0.32), transparent 55%),
+        radial-gradient(circle at top right, rgba(76, 29, 149, 0.42), transparent 60%),
+        linear-gradient(120deg, #050115 0, #02010b 40%, #020817 100%);
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      /* deixa bem organizado no topo, alinhado à esquerda */
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      max-width: 520px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.78rem;
+      color: #f1f1ff;
+      background: radial-gradient(circle at top left, rgba(168, 85, 255, 0.35), transparent 60%);
+      background-color: rgba(5, 5, 30, 0.7);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #a855ff;
+      box-shadow: 0 0 8px rgba(168, 85, 255, 0.95);
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition:
+        background var(--transition),
+        color var(--transition),
+        border var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #c084fc, #8b5cf6);
+      color: #ffffff;
+      box-shadow:
+        0 0 22px rgba(139, 92, 246, 0.9),
+        0 18px 40px rgba(0, 0, 0, 0.85);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 0 32px rgba(139, 92, 246, 1),
+        0 22px 50px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-secondary {
+      background: rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: #f1f1ff;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+
+    /* Botão WhatsApp (verde) */
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #ffffff;
+      box-shadow:
+        0 0 18px rgba(34, 197, 94, 0.8),
+        0 18px 40px rgba(0, 0, 0, 0.85);
+      border-color: transparent;
+    }
+
+    .btn-whatsapp:hover {
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      box-shadow:
+        0 0 26px rgba(74, 222, 128, 1),
+        0 22px 50px rgba(0, 0, 0, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .whats-icon-btn {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #16a34a;
+      font-weight: 700;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: #b3b3c7;
+    }
+
+    .section-alt { background: #050513; }
+    .section-soft { background: #060616; }
+
+    .section-header {
+      margin-bottom: 22px;
+      max-width: 760px;
+    }
+
+    .muted { color: var(--muted); font-size: 0.92rem; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+      font-weight: 550;
+      color: #f6f6ff;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top left, rgba(168, 85, 255, 0.6), transparent 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      top: 0;
+      color: var(--primary);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 26px;
+      align-items: center;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .check-icon {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #f8f3ff;
+    }
+
+    .tech-card {
+      border-radius: 20px;
+      padding: 18px 18px 14px;
+      background:
+        radial-gradient(circle at top left, rgba(168, 85, 255, 0.38), transparent 65%),
+        #101022;
+      border: 1px solid var(--border);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9);
+    }
+
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.74rem;
+      color: #f6f6ff;
+      margin-bottom: 14px;
+    }
+
+    .tech-radar {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tech-col { display: flex; flex-direction: column; gap: 4px; }
+
+    .tech-seg {
+      height: 10px;
+      border-radius: 999px;
+      background: #272739;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-fill {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(to right, #7c3aed, #e2d2ff);
+    }
+
+    .tech-seg.low .tech-fill { width: 35%; }
+    .tech-seg.med .tech-fill { width: 55%; }
+    .tech-seg.high .tech-fill { width: 80%; }
+    .tech-seg.max .tech-fill { width: 100%; }
+
+    .tech-label {
+      font-size: 0.76rem;
+      color: #f6f6ff;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 32px;
+    }
+
+    .callout {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: rgba(12, 12, 26, 0.9);
+      font-size: 0.86rem;
+      color: #f0f0ff;
+    }
+
+    /* LOGOS DE CLIENTES (CARROSSEL) */
+
+    .clientes {
+      background: radial-gradient(circle at top, rgba(148, 163, 253, 0.12), transparent 65%), var(--bg-alt);
+    }
+
+    .logo-strip-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 680px;
+    }
+
+    .logo-carousel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 32px;
+      position: relative;
+    }
+
+    .logo-grid {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 8px 4px;
+    }
+
+    .logo-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .logo-grid {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .logo-grid img {
+      max-width: 140px;
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      filter: none;
+      opacity: 0.9;
+      border-radius: 16px;
+      background: #02010b;
+      transition: opacity .2s ease, transform .2s ease;
+      flex-shrink: 0;
+    }
+
+    .logo-grid img:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .logo-nav {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.55);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #ffffff;
+      flex-shrink: 0;
+      transition: background var(--transition), transform var(--transition), border var(--transition), opacity var(--transition);
+    }
+
+    .logo-nav:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .logo-nav:disabled {
+      opacity: 0.25;
+      cursor: default;
+      transform: none;
+    }
+
+    /* MÉTRICAS */
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .metric-card {
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at top left, rgba(168, 85, 255, 0.22), transparent 60%),
+        var(--card);
+      border: 1px solid var(--border);
+      padding: 16px 18px 14px;
+    }
+
+    .metric-value {
+      font-size: 1.7rem;
+      font-weight: 660;
+      margin-bottom: 4px;
+      color: #e9d5ff;
+    }
+
+    .metric-label {
+      font-size: 0.86rem;
+      color: #f9f9ff;
+    }
+
+    .metric-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* DEPOIMENTOS */
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .testimonial-card {
+      border-radius: var(--radius-lg);
+      background: var(--card-soft);
+      border: 1px solid var(--border);
+      padding: 16px 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .testimonial-card.featured {
+      border-image: linear-gradient(to right, #a855ff, #7c3aed) 1;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
+    }
+
+    .stars {
+      color: var(--primary);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .testimonial-text { font-size: 0.9rem; color: #f1f1ff; }
+
+    .testimonial-name { font-size: 0.8rem; color: #c9c9dd; }
+
+    /* CTA + FORM */
+
+    .cta-block {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 26px;
+    }
+
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.78rem;
+      color: #f3f3ff;
+      margin-bottom: 14px;
+    }
+
+    form {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 18px;
+    }
+
+    .form-full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.8rem;
+      color: #e3e3ff;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid #373752;
+      background: #070710;
+      color: #ffffff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+      border-radius: 16px;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #85859b;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(168, 85, 255, 0.35);
+      background: #090918;
+    }
+
+    .form-footnote {
+      margin-top: 10px;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .whatsapp-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    footer {
+      padding: 26px 0 32px;
+      background: #04030c;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    footer .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #9c9cb2;
+    }
+
+    .footer-left,
+    .footer-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-separator {
+      opacity: 0.4;
+    }
+
+    .footer-instagram,
+    .footer-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-instagram-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: radial-gradient(circle at 30% 30%, #f9fafb 0, #e5e7eb 12%, #6366f1 40%, #a855ff 70%, #db2777 100%);
+    }
+
+    .footer-whatsapp-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #22c55e;
+      position: relative;
+      color: #ffffff;
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-whatsapp-icon::before {
+      content: "✆";
+      transform: translateY(-1px);
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 980px) {
+      .grid-3,
+      .metrics-grid,
+      .testimonials-grid { grid-template-columns: minmax(0, 1fr); }
+      .tech-grid,
+      .two-col { grid-template-columns: minmax(0, 1fr); }
+      form { grid-template-columns: minmax(0, 1fr); }
+      .hero-ctas { width: 100%; }
+      .btn { flex: 1; justify-content: center; }
+      footer .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .logo-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 60px 0; }
+      .container { padding: 0 18px; }
+      h1 { font-size: 2.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="brand">
+            <span class="brand-logo"></span>
+            <span class="brand-name">YAH GROWTH ISP</span>
+          </div>
+
+          <h1>Seu provedor trabalha duro demais para vender tão pouco. Por quê?</h1>
+          <p class="hero-sub">
+            Agende um diagnóstico estratégico gratuito e descubra exatamente onde sua operação está perdendo dinheiro — e como corrigir isso com método e previsibilidade.
+          </p>
+
+          <div class="hero-meta">
+            <div class="pill">
+              <span class="pill-dot"></span>
+              Únicos com garantia de resultado 100% em contrato.
+            </div>
+            <div class="pill">
+              <span class="pill-dot"></span>
+              Exclusivo para provedores com +1.000 clientes ativos.
+            </div>
+          </div>
+
+          <div class="hero-ctas">
+            <a href="#formulario" class="btn btn-primary">Quero meu diagnóstico gratuito</a>
+            <a href="#para-quem" class="btn btn-secondary">Ver se meu provedor se qualifica</a>
+          </div>
+
+          <div class="hero-note">
+            Diagnóstico direto, técnico e aplicável à realidade do seu provedor.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTORIDADE -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Referência nacional em ISPs.</h2>
+          <p class="muted">
+            5+ anos escalando provedores de internet com método, estrutura e previsibilidade.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARA QUEM -->
+    <section id="para-quem" class="section-soft">
+      <div class="container">
+        <div class="section-header">
+          <h2>Para quem é esse diagnóstico?</h2>
+          <p class="muted">
+            Se o seu provedor tem +1.000 clientes ativos e vende menos do que deveria, o problema não é demanda — é um gargalo operacional ainda não identificado.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">🧩</div>
+            <div class="card-title">Operação sobrecarregada</div>
+            <ul class="bullets">
+              <li>Time atendendo muito e convertendo pouco.</li>
+              <li>Leads se perdem entre etapas e sistemas.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-icon">📉</div>
+            <div class="card-title">Funil travado</div>
+            <ul class="bullets">
+              <li>Campanhas trazem leads, mas vendas não acompanham.</li>
+              <li>Queda de conversão sem causa clara.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-icon">💸</div>
+            <div class="card-title">Concorrência avançando</div>
+            <ul class="bullets">
+              <li>Outros provedores crescendo nos mesmos bairros.</li>
+              <li>Sensação de estar “perdendo dinheiro sem ver onde”.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO TÉCNICO -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="tech-grid">
+          <div>
+            <h2>Mostramos exatamente onde seu provedor perde vendas.</h2>
+            <p class="muted">
+              Analisamos sua operação de ponta a ponta e revelamos onde o dinheiro está escapando diariamente.
+            </p>
+            <ul class="check-list">
+              <li><div class="check-icon">✔</div><span>Análise por bairro, ticket, oferta e canal de aquisição.</span></li>
+              <li><div class="check-icon">✔</div><span>Mapeamento da jornada completa: lead → contato → proposta → fechamento.</span></li>
+              <li><div class="check-icon">✔</div><span>Diagnóstico dos gargalos comerciais que fazem você atender muito e vender pouco.</span></li>
+            </ul>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-pill">📊 Diagnóstico Yah Growth</div>
+            <div class="tech-radar">
+              <div class="tech-col">
+                <div class="tech-seg med"><div class="tech-fill"></div></div>
+                <div class="tech-label">Aquisição</div>
+              </div>
+              <div class="tech-col">
+                <div class="tech-seg low"><div class="tech-fill"></div></div>
+                <div class="tech-label">Qualificação</div>
+              </div>
+              <div class="tech-col">
+                <div class="tech-seg high"><div class="tech-fill"></div></div>
+                <div class="tech-label">Fechamento</div>
+              </div>
+              <div class="tech-col">
+                <div class="tech-seg max"><div class="tech-fill"></div></div>
+                <div class="tech-label">Potencial</div>
+              </div>
+            </div>
+            <p style="font-size:0.8rem;color:#d6d6f5;">
+              Antes: operação no escuro. Depois: mapa claro de gargalos e plano de ação.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE RECEBE -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>O que você recebe no diagnóstico gratuito</h2>
+          <p class="muted">
+            Uma reunião técnica para mostrar exatamente o que está travando seu provedor — e como destravar.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <ul class="check-list">
+            <li><div class="check-icon">✔</div><span>Gargalos reais da operação que impedem crescimento.</span></li>
+            <li><div class="check-icon">✔</div><span>Causas da baixa conversão em cada etapa da jornada.</span></li>
+            <li><div class="check-icon">✔</div><span>Travamentos do time comercial que fazem você vender menos do que deveria.</span></li>
+          </ul>
+          <ul class="check-list">
+            <li><div class="check-icon">✔</div><span>Análise dos concorrentes e comportamento por bairro.</span></li>
+            <li><div class="check-icon">✔</div><span>Mapa de oportunidades: onde há dinheiro na mesa hoje.</span></li>
+            <li><div class="check-icon">✔</div><span>Ações imediatas para vender mais com a estrutura atual.</span></li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          Tudo isso em uma única reunião gratuita — direta, técnica e aplicada à realidade do seu provedor.
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGOS (CARROSSEL) -->
+    <section class="clientes">
+      <div class="container">
+        <div class="logo-strip-header">
+          <h2>Provedores que já escalamos</h2>
+          <p class="muted">
+            Operações que confiam no nosso método para crescer com clareza, estrutura e previsibilidade.
+          </p>
+        </div>
+
+        <div class="logo-carousel">
+          <button class="logo-nav logo-prev" type="button" aria-label="Logos anteriores">‹</button>
+
+          <div class="logo-grid">
+            <img src="logos/masterinfo.png" alt="MasterInfo Internet" />
+            <img src="logos/foxconect.png" alt="Fox Conect" />
+            <img src="logos/vivas.png" alt="Vivas Telecom" />
+            <img src="logos/splink.png" alt="SP Link" />
+            <img src="logos/linkspeed.png" alt="Link Speed" />
+            <img src="logos/fibralider.png" alt="Fibra Líder" />
+            <img src="logos/impacto.png" alt="Impacto Telecom" />
+            <img src="logos/brasilinktelecom.png" alt="BrasilinkTelecom" />
+          </div>
+
+          <button class="logo-nav logo-next" type="button" aria-label="Próximas logos">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTADOS -->
+    <section class="section-soft">
+      <div class="container">
+        <div class="section-header">
+          <h2>Resultados que falam por si</h2>
+          <p class="muted">Números reais gerados a partir de diagnósticos cirúrgicos em operações de provedores.</p>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-value">+121%</div>
+            <div class="metric-label">em vendas em 60 dias.</div>
+            <div class="metric-caption">Depois de ajustes de operação, funil e oferta.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">947</div>
+            <div class="metric-label">novas vendas em menos de 3 meses.</div>
+            <div class="metric-caption">Estrutura comercial organizada para escalar com previsibilidade.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">+37%</div>
+            <div class="metric-label">de conversão média.</div>
+            <div class="metric-caption">Apenas com correções cirúrgicas na jornada e no atendimento.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>O que os provedores dizem após o diagnóstico</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card featured">
+            <div class="stars">★★★★★</div>
+            <div class="testimonial-text">“A Yah mostrou exatamente onde estávamos perdendo dinheiro. Em 60 dias vendemos mais que em 4 meses.”</div>
+            <div class="testimonial-name">Diretor Comercial – Pandora Internet</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <div class="testimonial-text">“A acurácia do diagnóstico mudou nosso jogo. Conversão disparou.”</div>
+            <div class="testimonial-name">CEO – Fox Conect</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <div class="testimonial-text">“Eu achava que era tráfego. Era operação. Eles viram o que ninguém vê.”</div>
+            <div class="testimonial-name">Fundador – Link Speed</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <div class="testimonial-text">“Primeira vez que sentimos segurança real em um parceiro. Estratégia pura.”</div>
+            <div class="testimonial-name">Gerente Geral – Vivas Telecom</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <div class="testimonial-text">“Clareza e vendas. É simples: funciona.”</div>
+            <div class="testimonial-name">Sócio – Fibra Líder</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <div class="testimonial-text">“Organizou nossa operação para crescer com previsibilidade, não na base da tentativa e erro.”</div>
+            <div class="testimonial-name">Diretor – MasterInfo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA + FORM -->
+    <section class="section-soft" id="formulario">
+      <div class="container">
+        <div class="cta-block">
+          <div class="mini-badge">Diagnóstico gratuito · 1 provedor por região</div>
+          <h2>Agende seu diagnóstico estratégico.</h2>
+          <p>Uma conversa técnica para enxergar o que está travando seu provedor — e como corrigir isso com método, dados e operação organizada.</p>
+        </div>
+
+        <p class="muted" style="text-align:center;margin-bottom:18px;">Queremos entender se seu provedor se qualifica.</p>
+
+        <form method="POST" action="https://hooks.zapier.com/hooks/catch/25378125/uf2t40z/">
+          <div>
+            <label for="nome">Nome completo</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome" required />
+          </div>
+          <div>
+            <label for="cargo">Cargo</label>
+            <input id="cargo" name="cargo" type="text" placeholder="CEO, diretor, gestor de marketing..." required />
+          </div>
+          <div>
+            <label for="empresa">Nome do provedor</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Ex: Pandora Internet" required />
+          </div>
+          <div>
+            <label for="clientes">Número aproximado de clientes ativos</label>
+            <select id="clientes" name="clientes" required>
+              <option value="">Selecione</option>
+              <option>1.000 a 2.500 clientes</option>
+              <option>2.500 a 5.000 clientes</option>
+              <option>5.000 a 10.000 clientes</option>
+              <option>Mais de 10.000 clientes</option>
+            </select>
+          </div>
+          <div>
+            <label for="whats">WhatsApp</label>
+            <input id="whats" name="whats" type="tel" placeholder="(00) 00000-0000" required />
+          </div>
+          <div>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="voce@provedor.com.br" required />
+          </div>
+          <div class="form-full">
+            <label for="desafio">Qual é hoje o maior desafio do seu provedor?</label>
+            <textarea id="desafio" name="desafio" placeholder="Conte em poucas linhas onde você sente que a operação está travando." required></textarea>
+          </div>
+          <div class="form-full">
+            <button type="submit" class="btn btn-primary" style="width:100%;">Enviar dados e falar com a Yah Growth</button>
+          </div>
+        </form>
+
+        <div class="form-footnote">
+          Retornamos em até 1 dia útil para confirmar sua região e agendar seu diagnóstico.
+        </div>
+      </div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <section>
+      <div class="container">
+        <div class="whatsapp-cta">
+          <h3>Prefere falar direto com nossa equipe?</h3>
+          <p class="muted">Se você já sabe que precisa de clareza operacional, chame a Yah agora no WhatsApp e acelere o agendamento do diagnóstico.</p>
+          <a href="https://wa.me/5511941409333" class="btn btn-whatsapp">
+            <span class="whats-icon-btn">✆</span>
+            Chamar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <div class="footer-left">
+          <span>© <span id="year"></span> Yah Growth ISP. Todos os direitos reservados.</span>
+          <span class="footer-separator">•</span>
+          <span>CNPJ 47.114.373/0001-57</span>
+        </div>
+        <div class="footer-right">
+          <span class="footer-instagram">
+            <span class="footer-instagram-icon"></span>
+            <a href="https://instagram.com/yahgrowthisp" target="_blank" rel="noopener noreferrer">@yahgrowthisp</a>
+          </span>
+          <span class="footer-separator">•</span>
+          <span class="footer-whatsapp">
+            <span class="footer-whatsapp-icon"></span>
+            <a href="https://wa.me/5511941409333" target="_blank" rel="noopener noreferrer">WhatsApp comercial</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // ano do footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // carrossel de logos
+    (function () {
+      const track = document.querySelector(".logo-grid");
+      const prevBtn = document.querySelector(".logo-prev");
+      const nextBtn = document.querySelector(".logo-next");
+
+      if (!track || !prevBtn || !nextBtn) return;
+
+      const scrollAmount = 220; // quantos px anda a cada clique
+
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+    })();
+  </script>
+</body>
+</html>
